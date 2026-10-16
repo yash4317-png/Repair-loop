@@ -1,0 +1,59 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Leaflet map fix */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+/* Background floating decorative mesh */
+.bg-mesh-dark {
+  background-image: radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+                    radial-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.bg-mesh-light {
+  background-image: radial-gradient(rgba(16, 185, 129, 0.12) 1px, transparent 1px),
+                    radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Smooth transitions on interactive cards */
+.interactive-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.interactive-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}

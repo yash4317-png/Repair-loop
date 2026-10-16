@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: repairloop-mysql
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: repairloop
+      MYSQL_DATABASE: repairloop
+      MYSQL_USER: repairloop
+      MYSQL_PASSWORD: repairloop
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - repairloop_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-urepairloop", "-prepairloop"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  repairloop_mysql_data:
